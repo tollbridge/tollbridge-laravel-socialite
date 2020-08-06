@@ -16,7 +16,7 @@ class TollbridgeAuth
 
         Route::get(config('tollbridge.routing.callback'), function () {
             $user = Socialite::with('tollbridge')->user();
-            event(new UserAuthenticatedEvent($user));
+            UserAuthenticatedEvent::dispatch($user);
 
             return redirect()->intended();
         });
