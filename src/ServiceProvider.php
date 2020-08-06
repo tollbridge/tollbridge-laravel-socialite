@@ -1,11 +1,12 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider;
+namespace Tollbridge\Socialite;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laravel\Socialite\Contracts\Factory;
+use Tollbridge\Socialite\OauthTwo\Provider as TollbridgeSocialiteProvider;
 
-class TollbridgeSocialiteServiceProvider extends ServiceProvider
+class ServiceProvider extends LaravelServiceProvider
 {
     public function boot()
     {

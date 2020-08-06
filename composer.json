@@ -1,5 +1,5 @@
 {
-    "name": "square1/tollbridge-socialite-provider",
+    "name": "tollbridge/laravel-socialite",
     "description": "Tollbridge.co service provider for Laravel Socialite authentication.",
     "keywords": [
         "square1",
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Square1\\TollbridgeSocialiteProvider\\": "src"
+            "Tollbridge\\Socialite\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Square1\\TollbridgeSocialiteProvider\\Tests\\": "tests"
+            "Tollbridge\\Socialite\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -48,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Square1\\TollbridgeSocialiteProvider\\TollbridgeSocialiteServiceProvider"
+                "Tollbridge\\Socialite\\ServiceProvider"
             ]
         }
     },

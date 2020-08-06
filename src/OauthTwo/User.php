@@ -1,6 +1,6 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider;
+namespace Tollbridge\Socialite\OauthTwo;
 
 use Laravel\Socialite\Two\User as TwoUser;
 

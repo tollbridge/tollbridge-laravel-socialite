@@ -1,10 +1,10 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider\Support;
+namespace Tollbridge\Socialite\Support;
 
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-use Square1\TollbridgeSocialiteProvider\Events\UserAuthenticatedEvent;
+use Tollbridge\Socialite\Events\UserAuthenticatedEvent;
 
 class TollbridgeAuth
 {

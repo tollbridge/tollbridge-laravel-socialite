@@ -1,11 +1,11 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider\Events;
+namespace Tollbridge\Socialite\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Square1\TollbridgeSocialiteProvider\User;
+use Tollbridge\Socialite\OauthTwo\User;
 
 class UserAuthenticatedEvent
 {

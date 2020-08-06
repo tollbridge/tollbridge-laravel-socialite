@@ -1,12 +1,12 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider;
+namespace Tollbridge\Socialite\OauthTwo;
 
 use Illuminate\Support\Arr;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
 
-class TollbridgeSocialiteProvider extends AbstractProvider implements ProviderInterface
+class Provider extends AbstractProvider implements ProviderInterface
 {
     /**
      * Get the authentication URL for the provider.

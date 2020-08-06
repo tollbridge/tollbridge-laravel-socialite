@@ -1,12 +1,12 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider\Tests;
+namespace Tollbridge\Socialite\Tests;
 
 use Illuminate\Support\Facades\Event;
 use Laravel\Socialite\Facades\Socialite;
-use Square1\TollbridgeSocialiteProvider\Events\UserAuthenticatedEvent;
-use Square1\TollbridgeSocialiteProvider\Support\TollbridgeAuth;
-use Square1\TollbridgeSocialiteProvider\User;
+use Tollbridge\Socialite\Events\UserAuthenticatedEvent;
+use Tollbridge\Socialite\OauthTwo\User;
+use Tollbridge\Socialite\Support\TollbridgeAuth;
 
 class TollbridgeProviderTest extends TestCase
 {

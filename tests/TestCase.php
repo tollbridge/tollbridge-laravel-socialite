@@ -1,12 +1,12 @@
 <?php
 
-namespace Square1\TollbridgeSocialiteProvider\Tests;
+namespace Tollbridge\Socialite\Tests;
 
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Illuminate\Support\Env;
 use Laravel\Socialite\SocialiteServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Square1\TollbridgeSocialiteProvider\TollbridgeSocialiteServiceProvider;
+use Tollbridge\Socialite\ServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -19,7 +19,7 @@ class TestCase extends Orchestra
     {
         return [
             SocialiteServiceProvider::class,
-            TollbridgeSocialiteServiceProvider::class,
+            ServiceProvider::class,
         ];
     }
 
