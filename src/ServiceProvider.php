@@ -13,7 +13,7 @@ class ServiceProvider extends LaravelServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/tollbridge.php' => config_path('tollbridge.php'),
-            ], 'config');
+            ], 'tollbridge-config');
         }
 
         $socialite = $this->app->make(Factory::class);
