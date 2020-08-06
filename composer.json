@@ -1,22 +1,23 @@
 {
-    "name": "spatie/tollbridge-socialite-provider",
+    "name": "square1/tollbridge-socialite-provider",
     "description": "Tollbridge.co service provider for Laravel Socialite authentication.",
     "keywords": [
-        "spatie",
+        "square1",
         "tollbridge-socialite-provider"
     ],
-    "homepage": "https://github.com/spatie/tollbridge-socialite-provider",
+    "homepage": "https://github.com/square1-io/tollbridge-socialite-provider",
     "license": "MIT",
     "authors": [
         {
             "name": "Jeff Ochoa",
             "email": "jeff@square1.io",
-            "homepage": "https://spatie.be",
+            "homepage": "https://square1.io",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "laravel/socialite": "^4.4"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -47,11 +48,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Square1\\TollbridgeSocialiteProvider\\TollbridgeSocialiteProviderServiceProvider"
-            ],
-            "aliases": {
-                "TollbridgeSocialiteProvider": "Square1\\TollbridgeSocialiteProvider\\TollbridgeSocialiteProviderFacade"
-            }
+                "Square1\\TollbridgeSocialiteProvider\\TollbridgeSocialiteServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
