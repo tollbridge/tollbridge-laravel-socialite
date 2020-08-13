@@ -39,7 +39,7 @@ class TollbridgeProviderTest extends TestCase
     {
         Event::fake();
         $user = new User;
-        $user->id;
+
         Socialite::shouldReceive('with')
             ->andReturnSelf()
             ->shouldReceive('user')
@@ -48,7 +48,7 @@ class TollbridgeProviderTest extends TestCase
         $callbackResponse = $this->get(config('tollbridge.routing.callback'));
 
         $callbackResponse->assertRedirect();
-        Event::assertDispatched(function (UserAuthenticatedEvent $event) use ($user) {
+        Event::assertDispatched(UserAuthenticatedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
     }
