@@ -52,7 +52,7 @@ return [
 
 ## Usage
 
-After install, jsut add the authentication routes to `/routes/web.php`
+After install, just add the authentication routes to `/routes/web.php`
 
 ```php
 use Tollbridge\Socialite\Support\TollbridgeAuth;
@@ -60,7 +60,7 @@ use Tollbridge\Socialite\Support\TollbridgeAuth;
 SupportTollbridgeAuth::routes();
 ```
 
-To use a custom middleware on these roues, you can use a route-group like so:
+To use a custom middleware on these routes, you can use a route-group like so:
 
 ```php
 Route::middleware('guest')->group(function () {
