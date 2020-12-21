@@ -7,6 +7,6 @@ return [
     'redirect' => env('TOLLBRIDGE_REDIRECT_URL'),
     'routing' => [
         'login' => '/tollbridge/login',
-        'callback' => '/tollbridge/login-callback',
+        'callback' => '/tollbridge/callback',
     ],
 ];
