@@ -52,7 +52,7 @@ class Provider extends AbstractProvider implements ProviderInterface
             ],
         ]);
 
-        return json_decode($user->getBody(), true);
+        return json_decode((string) $user->getBody(), true);
     }
 
     /**
@@ -105,7 +105,7 @@ class Provider extends AbstractProvider implements ProviderInterface
             'form_params' => $this->getTokenFields($code),
         ]);
 
-        $response = json_decode($response->getBody(), true);
+        $response = json_decode((string) $response->getBody(), true);
 
         return $response;
     }
