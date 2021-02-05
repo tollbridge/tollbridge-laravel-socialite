@@ -4,9 +4,9 @@ namespace Tollbridge\Socialite\Support;
 
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-use Tollbridge\Socialite\Events\Logout;
 use Tollbridge\Socialite\Events\Attempting;
 use Tollbridge\Socialite\Events\Authenticated;
+use Tollbridge\Socialite\Events\Logout;
 
 class TollbridgeAuth
 {
