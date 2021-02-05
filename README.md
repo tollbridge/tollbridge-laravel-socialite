@@ -94,7 +94,7 @@ class EventServiceProvider extends ServiceProvider
             //$user->getName()
         });
 
-        Event::listen('Tollbridge\Socialite\Events\Attempting', function ($user) {
+        Event::listen('Tollbridge\Socialite\Events\Attempting', function () {
             ...
         });
 
