@@ -105,3 +105,17 @@ class EventServiceProvider extends ServiceProvider
     }
 }
 ```
+
+## Local Development
+
+First link up your local repository:
+
+```bash
+composer config repositories.local '{"type": "path", "url": "../tollbridge-laravel-socialite"}' --file composer.json
+```
+
+Then install as normal via composer:
+
+```bash
+composer require tollbridge/laravel-socialite
+```
