@@ -7,7 +7,7 @@ return [
     'redirect' => env('TOLLBRIDGE_REDIRECT_URL'),
     'routing' => [
         'login' => '/tollbridge/login',
-		'logout' => '/tollbridge/logout',
+        'logout' => '/tollbridge/logout',
         'callback' => '/tollbridge/callback',
     ],
 ];

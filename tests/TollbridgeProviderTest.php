@@ -88,4 +88,36 @@ class TollbridgeProviderTest extends TestCase
 
         $this->assertStringContainsString(config('tollbridge.routing.login'), $response->getTargetUrl());
     }
+
+    /** @test */
+    public function middleware_callback_indended_redirect()
+    {
+        Event::fake();
+        $user = new User;
+
+        Socialite::shouldReceive('with')
+            ->andReturnSelf()
+            ->shouldReceive('user')
+            ->andReturn($user);
+
+        $url = 'https://localhost/987654321';
+        $response = $this->get(config('tollbridge.routing.callback').'?_tollbridge_redirect='.$url);
+
+        $response->assertStatus(302);
+
+        $this->assertStringContainsString($url, $response->getTargetUrl());
+    }
+
+    /** @test */
+    public function middleware_logout_indended_redirect()
+    {
+        Event::fake();
+
+        $url = 'https://localhost/123456789';
+        $response = $this->get(config('tollbridge.routing.logout').'?_tollbridge_redirect='.$url);
+
+        $response->assertStatus(302);
+
+        $this->assertStringContainsString($url, $response->getTargetUrl());
+    }
 }
