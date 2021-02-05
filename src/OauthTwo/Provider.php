@@ -52,7 +52,7 @@ class Provider extends AbstractProvider implements ProviderInterface
             ],
         ]);
 
-        return json_decode($user->getBody(), true);
+        return json_decode((string) $user->getBody(), true);
     }
 
     /**
@@ -63,11 +63,14 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function mapUserToObject(array $user)
     {
-        return (new User)->map([
-            'name' => Arr::get($user, 'firstname') . ' ' . Arr::get($user, 'lastname'),
+        return (new User)->setRaw($user)->map([
+            'id' => Arr::get($user, 'id'),
+            'name' => Arr::get($user, 'name'),
+            'nickname' => null,
+            'first_name' => Arr::get($user, 'firstname'),
+            'last_name' => Arr::get($user, 'lastname'),
             'email' => Arr::get($user, 'email'),
             'plan' => Arr::get($user, 'plan'),
-            'id' => Arr::get($user, 'id'),
             'avatar' => Arr::get($user, 'avatar'),
         ]);
     }
@@ -102,7 +105,7 @@ class Provider extends AbstractProvider implements ProviderInterface
             'form_params' => $this->getTokenFields($code),
         ]);
 
-        $response = json_decode($response->getBody(), true);
+        $response = json_decode((string) $response->getBody(), true);
 
         return $response;
     }
