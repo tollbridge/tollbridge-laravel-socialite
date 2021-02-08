@@ -26,8 +26,7 @@ class ServiceProvider extends LaravelServiceProvider
             }
         );
 
-        $kernel = $this->app->make(Kernel::class);
-        $kernel->pushMiddleware(TollbridgeRedirects::class);
+        $this->app['router']->pushMiddlewareToGroup('web', TollbridgeRedirects::class);
     }
 
     public function register()
