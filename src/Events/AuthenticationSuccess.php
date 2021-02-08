@@ -5,12 +5,16 @@ namespace Tollbridge\Socialite\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Tollbridge\Socialite\OauthTwo\User;
 
-class Logout
+class AuthenticationSuccess
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct()
+    public $user;
+
+    public function __construct(User $user)
     {
+        $this->user = $user;
     }
 }

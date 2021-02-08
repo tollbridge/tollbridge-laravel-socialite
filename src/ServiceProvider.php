@@ -2,7 +2,6 @@
 
 namespace Tollbridge\Socialite;
 
-use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laravel\Socialite\Contracts\Factory;
 use Tollbridge\Socialite\Middleware\TollbridgeRedirects;
@@ -26,8 +25,7 @@ class ServiceProvider extends LaravelServiceProvider
             }
         );
 
-        $kernel = $this->app->make(Kernel::class);
-        $kernel->pushMiddleware(TollbridgeRedirects::class);
+        $this->app['router']->pushMiddlewareToGroup('web', TollbridgeRedirects::class);
     }
 
     public function register()

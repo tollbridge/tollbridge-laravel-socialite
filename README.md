@@ -55,6 +55,19 @@ use Tollbridge\Socialite\Support\TollbridgeAuth;
 TollbridgeAuth::routes();
 ```
 
+Instead of using the default `TollbridgeAuth::routes()` you could also choose to create your own routes and logic in `/routes/web.php`
+
+```php
+Route::get(config('tollbridge.routing.login'), function () {
+});
+
+Route::get(config('tollbridge.routing.logout'), function () {
+});
+
+Route::get(config('tollbridge.routing.callback'), function () {
+});
+```
+
 To use a custom middleware on these routes, you can use a route-group like so:
 
 ```php
@@ -89,16 +102,24 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        Event::listen('Tollbridge\Socialite\Events\Authenticated', function ($user) {
+        Event::listen('Tollbridge\Socialite\Events\AuthenticationSuccess', function ($user) {
             ...
             //$user->getName()
         });
 
-        Event::listen('Tollbridge\Socialite\Events\Attempting', function () {
+        Event::listen('Tollbridge\Socialite\Events\AuthenticationFailure', function ($exception) {
+            //$exception->getMessage();
+        });
+
+        Event::listen('Tollbridge\Socialite\Events\TriggerLogin', function () {
             ...
         });
 
-        Event::listen('Tollbridge\Socialite\Events\Logout', function () {
+        Event::listen('Tollbridge\Socialite\Events\TriggerCallback', function () {
+            ...
+        });
+
+        Event::listen('Tollbridge\Socialite\Events\TriggerLogout', function () {
             ...
             //Session::flush();
         });
