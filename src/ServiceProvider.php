@@ -2,7 +2,6 @@
 
 namespace Tollbridge\Socialite;
 
-use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laravel\Socialite\Contracts\Factory;
 use Tollbridge\Socialite\Middleware\TollbridgeRedirects;
