@@ -107,8 +107,8 @@ class EventServiceProvider extends ServiceProvider
             //$user->getName()
         });
 
-        Event::listen('Tollbridge\Socialite\Events\AuthenticationFailure', function ($user) {
-            ...
+        Event::listen('Tollbridge\Socialite\Events\AuthenticationFailure', function ($exception) {
+            //$exception->getMessage();
         });
 
         Event::listen('Tollbridge\Socialite\Events\TriggerLogin', function () {
