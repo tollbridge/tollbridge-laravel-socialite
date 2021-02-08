@@ -1,12 +1,6 @@
-# Tollbridge.co service-provider for Laravel Socialite authentication
+# Tollbridge OAuth2 Provider for Laravel Socialite
 
-> THIS PACKAGE IS UNDER DEVELOPMENT, PLEASE USE WITH PRECAUTION.
-
-![alt text](./tollbridge.png "Tollbridge.co")
-
-[Tollbridge](https://tollbridge.co) is an user-authentication, subscription and paywall software as a service.
-
-This package will help you to implement Tollbridge's based authentication in your [Laravel](https://laravel.com) application is just a few minutes.
+[Tollbridge](https://tollbridge.co) is a user-authentication, subscription and paywall software as a service. This package will help you to implement Tollbridge's based authentication in your [Laravel](https://laravel.com) application is just a few minutes.
 
 ## Installation
 
@@ -23,7 +17,7 @@ Add the credentials provided on the Tollbridge platform to your `.env` file:
 ```text
 TOLLBRIDGE_CLIENT_ID=
 TOLLBRIDGE_CLIENT_SECRET=
-TOLLBRIDGE_REDIRECT_URL=https://localhost/tollbridge/login-callback
+TOLLBRIDGE_REDIRECT_URL=https://localhost/tollbridge/callback
 TOLLBRIDGE_ACCOUNT_URL=https://your-account.tollbridge.co
 ```
 
@@ -45,7 +39,8 @@ return [
     'redirect' => env('TOLLBRIDGE_REDIRECT_URL'),
     'routing' => [
         'login' => '/tollbridge/login',
-        'callback' => '/tollbridge/login-callback',
+        'logout' => '/tollbridge/logout',
+        'callback' => '/tollbridge/callback',
     ],
 ];
 ```
@@ -74,7 +69,7 @@ To start the authentication process, add a link to the login URL:
 <a href="{{ url(config('tollbridge.routing.login')) }}">Login</a>
 ```
 
-## Accessing the User's data
+## Accessing the Tollbridge data and events
 
 When the authentication process finishes successfully, an event is dispatched, you can create a new event-handler to get the user-data:
 
@@ -83,7 +78,6 @@ When the authentication process finishes successfully, an event is dispatched, y
 
 namespace App\Providers;
 
-use App\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -95,12 +89,18 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        Event::listen('Tollbridge\Socialite\Events\UserAuthenticatedEvent', function ($user) {
-            User::updateOrCreate([
-                'email' => $user->getEmail(),
-                'name' => $user->getName(),
-                'plan' => $user->getPlan()
-            ]);
+        Event::listen('Tollbridge\Socialite\Events\Authenticated', function ($user) {
+            ...
+            //$user->getName()
+        });
+
+        Event::listen('Tollbridge\Socialite\Events\Attempting', function () {
+            ...
+        });
+
+        Event::listen('Tollbridge\Socialite\Events\Logout', function () {
+            ...
+            //Session::flush();
         });
     }
 }

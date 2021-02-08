@@ -2,8 +2,10 @@
 
 namespace Tollbridge\Socialite;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laravel\Socialite\Contracts\Factory;
+use Tollbridge\Socialite\Middleware\TollbridgeRedirects;
 use Tollbridge\Socialite\OauthTwo\Provider as TollbridgeSocialiteProvider;
 
 class ServiceProvider extends LaravelServiceProvider
@@ -23,6 +25,9 @@ class ServiceProvider extends LaravelServiceProvider
                 return $socialite->buildProvider(TollbridgeSocialiteProvider::class, config('tollbridge'));
             }
         );
+
+        $kernel = $this->app->make(Kernel::class);
+        $kernel->pushMiddleware(TollbridgeRedirects::class);
     }
 
     public function register()
