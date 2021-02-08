@@ -2,7 +2,6 @@
 
 namespace Tollbridge\Socialite\Tests;
 
-use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use Tollbridge\Socialite\OauthTwo\User;
 
