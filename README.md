@@ -51,6 +51,8 @@ After install, just add the authentication routes to `/routes/web.php`
 
 ```php
 Route::get(config('tollbridge.routing.login'), function () {
+    //session()->set('url.intended', request()->input('url'));
+    //..
     return Socialite::with('tollbridge')->redirect();
 });
 
