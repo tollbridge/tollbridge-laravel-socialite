@@ -63,7 +63,8 @@ Route::get(config('tollbridge.routing.logout'), function () {
 });
 
 Route::get(config('tollbridge.routing.callback'), function () {
-    //$user = Socialite::with('tollbridge')->user();
+    $user = Socialite::with('tollbridge')->user();
+    //session()->set('user', $user);
     //..
     return redirect()->intended();
 });
