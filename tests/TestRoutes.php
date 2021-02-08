@@ -19,6 +19,7 @@ class TestRoutes
 
         Route::get(config('tollbridge.routing.callback'), function () {
             $user = Socialite::with('tollbridge')->user();
+
             return redirect()->intended();
         });
     }
