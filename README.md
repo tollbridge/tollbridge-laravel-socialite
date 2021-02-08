@@ -50,29 +50,20 @@ return [
 After install, just add the authentication routes to `/routes/web.php`
 
 ```php
-use Tollbridge\Socialite\Support\TollbridgeAuth;
-
-TollbridgeAuth::routes();
-```
-
-Instead of using the default `TollbridgeAuth::routes()` you could also choose to create your own routes and logic in `/routes/web.php`
-
-```php
 Route::get(config('tollbridge.routing.login'), function () {
+    return Socialite::with('tollbridge')->redirect();
 });
 
 Route::get(config('tollbridge.routing.logout'), function () {
+    //session()->flush();
+    //..
+    return redirect()->intended();
 });
 
 Route::get(config('tollbridge.routing.callback'), function () {
-});
-```
-
-To use a custom middleware on these routes, you can use a route-group like so:
-
-```php
-Route::middleware('guest')->group(function () {
-    TollbridgeAuth::routes();
+    //$user = Socialite::with('tollbridge')->user();
+    //..
+    return redirect()->intended();
 });
 ```
 
@@ -82,50 +73,15 @@ To start the authentication process, add a link to the login URL:
 <a href="{{ url(config('tollbridge.routing.login')) }}">Login</a>
 ```
 
-## Accessing the Tollbridge data and events
+## Included Middleware
 
-When the authentication process finishes successfully, an event is dispatched, you can create a new event-handler to get the user-data:
+The `Tollbridge\Socialite\Middleware\TollbridgeRedirects` middleware is automatically loaded.
 
-```php
-<?php
+If the param `_tollbridge_logout` is set the user will get redirected to `config('tollbridge.routing.logout')`
 
-namespace App\Providers;
+If the param `_tollbridge_reauth` is set the user will get redirected to `config('tollbridge.routing.login')`. 
+This will in turn re-initiate an OAuth session.
 
-use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
-class EventServiceProvider extends ServiceProvider
-{
-    protected $listen = [];
-
-    public function boot()
-    {
-        parent::boot();
-
-        Event::listen('Tollbridge\Socialite\Events\AuthenticationSuccess', function ($user) {
-            ...
-            //$user->getName()
-        });
-
-        Event::listen('Tollbridge\Socialite\Events\AuthenticationFailure', function ($exception) {
-            //$exception->getMessage();
-        });
-
-        Event::listen('Tollbridge\Socialite\Events\TriggerLogin', function () {
-            ...
-        });
-
-        Event::listen('Tollbridge\Socialite\Events\TriggerCallback', function () {
-            ...
-        });
-
-        Event::listen('Tollbridge\Socialite\Events\TriggerLogout', function () {
-            ...
-            //Session::flush();
-        });
-    }
-}
-```
 
 ## Local Development
 
