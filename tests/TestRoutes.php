@@ -10,7 +10,7 @@ class TestRoutes
     public static function routes()
     {
         Route::get(config('tollbridge.routing.login'), function () {
-            return Socialite::with('tollbridge')->redirect();
+            return Socialite::driver('tollbridge')->redirect();
         });
 
         Route::get(config('tollbridge.routing.logout'), function () {
@@ -18,7 +18,7 @@ class TestRoutes
         });
 
         Route::get(config('tollbridge.routing.callback'), function () {
-            $user = Socialite::with('tollbridge')->user();
+            $user = Socialite::driver('tollbridge')->user();
 
             return redirect()->intended();
         });

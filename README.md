@@ -54,7 +54,7 @@ After install, just add the authentication routes to `/routes/web.php`
 Route::get(config('tollbridge.routing.login'), function () {
     //session()->set('url.intended', request()->input('url'));
     //..
-    return Socialite::with('tollbridge')->redirect();
+    return Socialite::driver('tollbridge')->redirect();
 });
 
 Route::get(config('tollbridge.routing.logout'), function () {
@@ -64,9 +64,9 @@ Route::get(config('tollbridge.routing.logout'), function () {
 });
 
 Route::get(config('tollbridge.routing.callback'), function () {
-    $user = Socialite::with('tollbridge')->user();
+    $user = Socialite::driver('tollbridge')->user();
     //session()->put('user', $user);
-    //$user = Socialite::with('tollbridge')->userFromToken($user->token);
+    //$user = Socialite::driver('tollbridge')->userFromToken($user->token);
     //$user->getName();
     //$user->getEmail();
     //$user->getPlan();
