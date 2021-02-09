@@ -22,7 +22,7 @@ TOLLBRIDGE_CLIENT_SECRET=
 
 ### Callback URL
 
-In the Tollbridge `Integrations` section, you will need to set the *Callback URL* to match the correct path in your application. By default his URL will be your full protocol/hostname along with the path `/tollbridge/callback`. Note that this callback path is fully configurable within the tollbridge config file.
+In the Tollbridge `Integrations` section, you will need to set the *Callback URL* to match the correct path in your application. By default this URL will be your full protocol/hostname along with the path `/tollbridge/callback`. Note that this callback path is fully configurable within the tollbridge config file.
 
 `url(config('tollbridge.routing.callback'))` e.g. https://www.example.test/tollbridge/callback
 
