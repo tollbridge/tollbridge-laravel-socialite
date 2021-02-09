@@ -2,16 +2,18 @@
     "name": "tollbridge/laravel-socialite",
     "description": "Tollbridge.co service provider for Laravel Socialite authentication.",
     "keywords": [
-        "square1",
+        "tollbridge",
+        "tollbridge.co",
+        "tollbridge laravel",
         "tollbridge-socialite-provider"
     ],
-    "homepage": "https://github.com/square1-io/tollbridge-socialite-provider",
+    "homepage": "https://github.com/tollbridge/tollbridge-laravel-socialite",
     "license": "MIT",
     "authors": [
         {
             "name": "Jeff Ochoa",
             "email": "jeff@square1.io",
-            "homepage": "https://square1.io",
+            "homepage": "https://www.tollbridge.co",
             "role": "Developer"
         }
     ],
