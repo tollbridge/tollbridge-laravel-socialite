@@ -44,14 +44,14 @@ class TollbridgeProviderTest extends TestCase
     {
         $user = new User;
 
-        Socialite::shouldReceive('with')
+        Socialite::shouldReceive('driver')
             ->andReturnSelf()
             ->shouldReceive('user')
             ->andReturn($user);
 
-        $callbackResponse = $this->get(config('tollbridge.routing.callback'));
+        $response = $this->get(config('tollbridge.routing.callback'));
 
-        $callbackResponse->assertRedirect();
+        $response->assertRedirect();
     }
 
     /** @test */
