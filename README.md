@@ -12,13 +12,13 @@ composer require tollbridge/laravel-socialite
 
 ## Configuration
 
-Add the credentials provided on the Tollbridge platform to your `.env` file:
+To access you Tollbridge credentials, visit the `Integrations` section in the Tollbridge admin. Add the provided credentials on the Tollbridge platform to your `.env` file:
 
 ```text
+TOLLBRIDGE_ACCOUNT_URL=https://your-account.tollbridge.co
 TOLLBRIDGE_CLIENT_ID=
 TOLLBRIDGE_CLIENT_SECRET=
-TOLLBRIDGE_REDIRECT_URL=https://localhost/tollbridge/callback
-TOLLBRIDGE_ACCOUNT_URL=https://your-account.tollbridge.co
+TOLLBRIDGE_CALLBACK_URL=https://localhost/tollbridge/callback
 ```
 
 You can publish the configuration file to the local project directory using artisan:
@@ -36,7 +36,7 @@ return [
     'account_url' => env('TOLLBRIDGE_ACCOUNT_URL'),
     'client_id' => env('TOLLBRIDGE_CLIENT_ID'),
     'client_secret' => env('TOLLBRIDGE_CLIENT_SECRET'),
-    'redirect' => env('TOLLBRIDGE_REDIRECT_URL'),
+    'redirect' => env('TOLLBRIDGE_CALLBACK_URL'),
     'routing' => [
         'login' => '/tollbridge/login',
         'logout' => '/tollbridge/logout',
@@ -44,6 +44,7 @@ return [
     ],
 ];
 ```
+*Note: `tollbridge.redirect` and `tollbridge.routing.callback` should point to the same internal route*
 
 ## Usage
 
@@ -64,7 +65,11 @@ Route::get(config('tollbridge.routing.logout'), function () {
 
 Route::get(config('tollbridge.routing.callback'), function () {
     $user = Socialite::with('tollbridge')->user();
-    //session()->set('user', $user);
+    //session()->put('user', $user);
+    //$user = Socialite::with('tollbridge')->userFromToken($user->token);
+    //$user->getName();
+    //$user->getEmail();
+    //$user->getPlan();
     //..
     return redirect()->intended();
 });

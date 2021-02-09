@@ -21,7 +21,7 @@ class TollbridgeRedirects
             return redirect(config('tollbridge.routing.logout'));
         }
 
-        //Callback
+        //Reauth
         if ($request->has('_tollbridge_reauth')) {
             return redirect(config('tollbridge.routing.login'));
         }
