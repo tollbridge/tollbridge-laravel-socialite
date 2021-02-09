@@ -13,7 +13,7 @@ class User extends TwoUser
      */
     public $plan;
 
-    public function getPlan()
+    public function getPlan(): string
     {
         return $this->plan;
     }

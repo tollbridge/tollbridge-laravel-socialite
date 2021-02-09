@@ -46,7 +46,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $user = $this->httpClient->get(config('tollbridge.account_url').'/api/user', [
+        $user = $this->getHttpClient()->get(config('tollbridge.account_url').'/api/user', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token,
             ],

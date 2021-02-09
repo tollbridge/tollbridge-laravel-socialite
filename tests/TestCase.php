@@ -29,11 +29,11 @@ class TestCase extends Orchestra
         $app->useEnvironmentPath(__DIR__.'/../');
         $app->bootstrapWith([LoadEnvironmentVariables::class]);
 
+        $app['config']->set('tollbridge.account_url', Env::get('TOLLBRIDGE_ACCOUNT_URL', 'https://companyname.tollbridge.test'));
+        $app['config']->set('tollbridge.client_id', Env::get('TOLLBRIDGE_CLIENT_ID', 'qwerty-123456-qwerty-123456'));
+        $app['config']->set('tollbridge.client_secret', Env::get('TOLLBRIDGE_CLIENT_SECRET', 'z1xc2vb4nm5as6df7gh8jk9lq0wertyuiop'));
+        $app['config']->set('tollbridge.redirect', Env::get('TOLLBRIDGE_CALLBACK_URL', 'https://www.localhost.test/tollbridge/callback'));
         $this->loadMiddleware($app);
-        $app['config']->set('tollbridge.account_url', Env::get('TOLLBRIDGE_ACCOUNT_URL'));
-        $app['config']->set('tollbridge.client_id', Env::get('TOLLBRIDGE_CLIENT_ID'));
-        $app['config']->set('tollbridge.client_secret', Env::get('TOLLBRIDGE_CLIENT_SECRET'));
-        $app['config']->set('tollbridge.redirect_url', Env::get('TOLLBRIDGE_REDIRECT_URL'));
     }
 
     protected function loadMiddleware($app)
