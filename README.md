@@ -15,7 +15,7 @@ composer require tollbridge/laravel-socialite
 To access your Tollbridge credentials, visit the `Integrations` section in the Tollbridge admin. Add the provided credentials on the Tollbridge platform to your `.env` file:
 
 ```text
-TOLLBRIDGE_ACCOUNT_URL=
+TOLLBRIDGE_APP_ID=
 TOLLBRIDGE_CLIENT_ID=
 TOLLBRIDGE_CLIENT_SECRET=
 ```
@@ -41,7 +41,7 @@ This is the content of the config file:
 <?php
 
 return [
-    'account_url' => env('TOLLBRIDGE_ACCOUNT_URL'),
+    'app_id' => env('TOLLBRIDGE_APP_ID'),
     'client_id' => env('TOLLBRIDGE_CLIENT_ID'),
     'client_secret' => env('TOLLBRIDGE_CLIENT_SECRET'),
     'routing' => [

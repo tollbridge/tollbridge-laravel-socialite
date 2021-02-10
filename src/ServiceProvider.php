@@ -19,6 +19,7 @@ class ServiceProvider extends LaravelServiceProvider
 
         //Set OAuth redirect URL
         config(['tollbridge.redirect' => url(config('tollbridge.routing.callback'))]);
+        config(['tollbridge.account_url' => 'https://'.config('tollbridge.app_id')]);
 
         $socialite = $this->app->make(Factory::class);
         $socialite->extend(
