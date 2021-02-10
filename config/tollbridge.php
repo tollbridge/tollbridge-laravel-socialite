@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'account_url' => env('TOLLBRIDGE_ACCOUNT_URL'),
+    'app_id' => env('TOLLBRIDGE_APP_ID'),
     'client_id' => env('TOLLBRIDGE_CLIENT_ID'),
     'client_secret' => env('TOLLBRIDGE_CLIENT_SECRET'),
     'routing' => [
