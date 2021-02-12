@@ -24,7 +24,7 @@ class ServiceProvider extends LaravelServiceProvider
         $socialite = $this->app->make(Factory::class);
         $socialite->extend(
             'tollbridge',
-            function ($app) use ($socialite) {
+            function () use ($socialite) {
                 return $socialite->buildProvider(TollbridgeSocialiteProvider::class, config('tollbridge'));
             }
         );
