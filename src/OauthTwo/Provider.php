@@ -23,9 +23,8 @@ class Provider extends AbstractProvider implements ProviderInterface
             'scope' => '',
             'state' => $state,
         ]);
-        $url = config('tollbridge.account_url').'/oauth/authorize?'.$query;
 
-        return $url;
+        return config('tollbridge.account_url').'/oauth/authorize?'.$query;
     }
 
     /**
@@ -41,8 +40,10 @@ class Provider extends AbstractProvider implements ProviderInterface
     /**
      * Get the raw user for the given access token.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function getUserByToken($token)
     {
@@ -95,8 +96,10 @@ class Provider extends AbstractProvider implements ProviderInterface
     /**
      * Get the access token response for the given code.
      *
-     * @param  string  $code
+     * @param string $code
+     *
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getAccessTokenResponse($code)
     {
@@ -105,8 +108,6 @@ class Provider extends AbstractProvider implements ProviderInterface
             'form_params' => $this->getTokenFields($code),
         ]);
 
-        $response = json_decode((string) $response->getBody(), true);
-
-        return $response;
+        return json_decode((string) $response->getBody(), true);
     }
 }
